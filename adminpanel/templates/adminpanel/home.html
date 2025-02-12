@@ -1,0 +1,30 @@
+{% extends 'adminpanel/admin_base.html'%}
+{% block title %}
+MyShop | Home
+{% endblock %}
+{% block content %}
+<div><a href="{% url 'adminpanel:add_product'%}">Add New Product</a></div>
+<div class="row m-3">
+    {% for product in products %}
+    <div class="col col-3">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ product.product_photo.url }}" class="card-img-top" alt="{{product.name}}" height="250" width="100">
+            <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">Rs.{{product.price}}/-</li>
+            <li class="list-group-item">Currently available: {{product.stock}} nos</li>
+            <li class="list-group-item">{{product.category}}</li>
+            </ul>
+            <div class="card-body text-center p-3">
+            <a href="{% url 'adminpanel:edit_product' product.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'adminpanel:delete_product' product.id %}" class="btn btn-danger">Delete</a>
+            
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
