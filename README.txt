@@ -1,2 +1,2 @@
 username:ecommerceadmin
-password:mypassword1234 
+password:
